@@ -8,7 +8,7 @@ import (
 	"testing"
 )
 
-// 玄机 4.4
+// 玄机 4.4 绝世3.8
 func Test_SecondDamageComputation(t *testing.T) {
 	skillCoefficients := attribute_value.NewSkillCoefficient(attribute_value.TheMystery)
 	character := attribute_value.BasicCharacter{
@@ -25,7 +25,7 @@ func Test_SecondDamageComputation(t *testing.T) {
 	}
 
 	req := types.CharacterDataReq{
-		TestType:   2,
+		TestType:   3,
 		Occupation: attribute_value.TheMystery,
 	}
 
@@ -43,25 +43,25 @@ func Test_SecondDamageComputation(t *testing.T) {
 
 }
 
-// 夏天神相 3.1
+// 夏天神相 3.6 绝世 3
 func Test_SecondDamageComputation1(t *testing.T) {
 	skillCoefficients := attribute_value.NewSkillCoefficient(attribute_value.ImageOfGod)
 
 	character := attribute_value.BasicCharacter{
-		MinAttack:              3398,
-		MaxAttack:              4913,
-		ElementalDamage:        1800,
-		FixedDefeat:            1312,
-		PercentageDefeat:       0.234,
-		MonsterPenetration:     1322,
-		CriticalHitProbability: 427,
-		CriticalHitDamage:      0.76,
-		FixedBrokenGuard:       800,
+		MinAttack:              3498,
+		MaxAttack:              5065,
+		ElementalDamage:        2239,
+		FixedDefeat:            1111,
+		PercentageDefeat:       0.237,
+		MonsterPenetration:     1504,
+		CriticalHitProbability: 442,
+		CriticalHitDamage:      0.757,
+		FixedBrokenGuard:       699,
 		PercentageBrokenGuard:  0.0,
 	}
 
 	req := types.CharacterDataReq{
-		TestType:   2,
+		TestType:   3,
 		Occupation: attribute_value.ImageOfGod,
 	}
 
@@ -97,7 +97,7 @@ func Test_SecondDamageComputation2(t *testing.T) {
 	}
 
 	req := types.CharacterDataReq{
-		TestType:   2,
+		TestType:   3,
 		Occupation: attribute_value.NineSpirits,
 	}
 
@@ -115,7 +115,7 @@ func Test_SecondDamageComputation2(t *testing.T) {
 
 }
 
-// 龙 4.6
+// 龙 4.6 绝世3.9
 func Test_SecondDamageComputation3(t *testing.T) {
 	skillCoefficients := attribute_value.NewSkillCoefficient(attribute_value.DragonMindingLight)
 
@@ -133,7 +133,7 @@ func Test_SecondDamageComputation3(t *testing.T) {
 	}
 
 	req := types.CharacterDataReq{
-		TestType:   2,
+		TestType:   3,
 		Occupation: attribute_value.DragonMindingLight,
 	}
 
@@ -151,7 +151,7 @@ func Test_SecondDamageComputation3(t *testing.T) {
 
 }
 
-// 血河 2.7
+// 血河 2.7 绝世2.2
 func Test_SecondDamageComputation4(t *testing.T) {
 	skillCoefficients := attribute_value.NewSkillCoefficient(attribute_value.RiverOfBlood)
 
@@ -169,8 +169,44 @@ func Test_SecondDamageComputation4(t *testing.T) {
 	}
 
 	req := types.CharacterDataReq{
-		TestType:   2,
+		TestType:   3,
 		Occupation: attribute_value.RiverOfBlood,
+	}
+
+	secondDamage := damage.FinalSecondDamageComputation(req, character, skillCoefficients)
+
+	sum := 0.0
+	for _, v := range secondDamage {
+		sum += v
+	}
+	fmt.Printf("%f万 \n", sum/10000)
+
+	for k, v := range secondDamage {
+		fmt.Printf("技能:%s 秒伤:%f 万  占比: %f  \n", k, v/10000, v/sum)
+	}
+
+}
+
+// 鸿音 绝世3.5
+func Test_SecondDamageComputation5(t *testing.T) {
+	skillCoefficients := attribute_value.NewSkillCoefficient(attribute_value.HighTone)
+
+	character := attribute_value.BasicCharacter{
+		MinAttack:              3508,
+		MaxAttack:              5116,
+		ElementalDamage:        2030,
+		FixedDefeat:            1929,
+		PercentageDefeat:       0.281,
+		MonsterPenetration:     1600,
+		CriticalHitProbability: 429,
+		CriticalHitDamage:      0.55,
+		FixedBrokenGuard:       974,
+		PercentageBrokenGuard:  0.0,
+	}
+
+	req := types.CharacterDataReq{
+		TestType:   3,
+		Occupation: attribute_value.HighTone,
 	}
 
 	secondDamage := damage.FinalSecondDamageComputation(req, character, skillCoefficients)

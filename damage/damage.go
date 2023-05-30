@@ -20,7 +20,7 @@ func SecondDamageComputation(req types.CharacterDataReq, skillCoefficient attrib
 	//怪穿系数计算
 	monsterCoefficient := 1.0
 	if character.MonsterPenetration < basicMonster.MonsterResistance {
-		monsterCoefficient = 1 - (basicMonster.MonsterResistance-character.MonsterPenetration)/100*0.035
+		monsterCoefficient = 1 - (basicMonster.MonsterResistance-character.MonsterPenetration)/100*0.03
 	}
 
 	//防御校准

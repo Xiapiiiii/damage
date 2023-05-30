@@ -6,12 +6,12 @@ type CharacterDataReq struct {
 	MinAttack              float64 `form:"min_attack" binding:"required"`               //最小攻击
 	MaxAttack              float64 `form:"max_attack" binding:"required"`               //最大攻击
 	ElementalDamage        float64 `form:"elemental_damage" binding:"required"`         //全元素攻击
-	FixedDefeat            float64 `form:"fixed_defeat" binding:"required"`             //克敌
-	PercentageDefeat       float64 `form:"percentage_defeat" binding:"required"`        //百分比克敌
+	FixedDefeat            float64 `form:"fixed_defeat" `                               //克敌
+	PercentageDefeat       float64 `form:"percentage_defeat" `                          //百分比克敌
 	MonsterPenetration     float64 `form:"monster_penetration" binding:"required"`      //怪物穿透
 	CriticalHitProbability float64 `form:"critical_hit_probability" binding:"required"` //会心
 	CriticalHitDamage      float64 `form:"critical_hit_damage" binding:"required"`      //会心伤害
-	FixedBrokenGuard       float64 `form:"fixed_broken_guard" binding:"required"`       //固定破防
+	FixedBrokenGuard       float64 `form:"fixed_broken_guard" `                         //固定破防
 	PercentageBrokenGuard  float64 `form:"percentage_broken_guard"`                     //百分比破防
 }
 

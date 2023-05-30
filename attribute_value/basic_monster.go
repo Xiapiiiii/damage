@@ -17,25 +17,25 @@ func NewBasicMonster(bizType int64) *BasicMonster {
 	switch bizType {
 	case CommonWhiteStone:
 		return &BasicMonster{
-			Defense:                  2888,
+			Defense:                  3500,
 			CriticalStrikeResistance: 0.10,
 			MonsterResistance:        1200,
 		}
 	case HeroWhiteStone:
 		return &BasicMonster{
-			Defense:                  3588,
+			Defense:                  4200,
 			CriticalStrikeResistance: 0.20,
 			MonsterResistance:        1480,
 		}
 	case EliteWhiteStone:
 		return &BasicMonster{
-			Defense:                  4400,
+			Defense:                  5000,
 			CriticalStrikeResistance: 0.25,
-			MonsterResistance:        1800,
+			MonsterResistance:        1850,
 		}
 	default:
 		return &BasicMonster{
-			Defense:                  2888,
+			Defense:                  5000,
 			CriticalStrikeResistance: 0.10,
 			MonsterResistance:        1200,
 		}
