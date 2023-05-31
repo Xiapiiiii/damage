@@ -16,6 +16,7 @@ type CharacterDataReq struct {
 }
 
 type CharacterDataResp struct {
+	Code    int64            `json:"code"`
 	Message string           `json:"message"`
 	Data    SecondDamageData `json:"data"`
 }
@@ -29,6 +30,7 @@ type GetCollocationReq struct {
 }
 
 type GetCollocationResp struct {
+	Code    int64           `json:"code"`
 	Message string          `json:"message"`
 	Data    CollocationData `json:"data"`
 }
@@ -46,4 +48,40 @@ type GetVisitsResp struct {
 	AccessTotal int64 `json:"access_total"`
 	AccessDay   int64 `json:"access_day"`
 	UserTotal   int64 `json:"user_total"`
+}
+
+type GetRankingReq struct {
+	RoleUID     int64  `form:"role_uid"`
+	RoleName    string `form:"role_name"`
+	Occupation  int64  `form:"occupation"`
+	AreaService string `form:"area_service"`
+}
+
+type GetRankingResp struct {
+	Code    int64             `json:"code"`
+	Message string            `json:"message"`
+	Data    []RankingRespData `json:"data"`
+}
+
+type RankingRespData struct {
+	ID          string  `json:"id"`
+	RoleUID     int64   `json:"role_uid"`
+	RoleName    string  `json:"role_name"`
+	Occupation  int64   `json:"occupation"`
+	AreaService string  `json:"area_service"`
+	Damage      float64 `json:"damage"`
+}
+
+type UpdateRankingReq struct {
+	ID          string  `form:"id"`
+	RoleUID     int64   `form:"role_uid"`
+	RoleName    string  `form:"role_name"`
+	Occupation  int64   `form:"occupation"`
+	AreaService string  `form:"area_service"`
+	Damage      float64 `form:"damage"`
+}
+
+type UpdateRankingResp struct {
+	Code    int64  `json:"code"`
+	Message string `json:"message"`
 }

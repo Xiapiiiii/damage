@@ -10,6 +10,7 @@ import (
 type ServiceContext struct {
 	Mongo          *mongo.Database
 	AccessDayModel *model.AccessDayModel
+	RankingRecord  *model.RankingRecordModel
 }
 
 func NewServiceContext(c *gin.Context) *ServiceContext {
@@ -25,5 +26,6 @@ func NewServiceContext(c *gin.Context) *ServiceContext {
 	return &ServiceContext{
 		Mongo:          mongoDb,
 		AccessDayModel: model.NewAccessDayModel(mongoDb),
+		RankingRecord:  model.NewRankingRecordModel(mongoDb),
 	}
 }

@@ -41,6 +41,12 @@ func main() {
 	r.POST("/visits", handler.GetVisits)
 	//r.POST("api/visits", handler.GetVisits)
 
+	//获取排行榜
+	r.POST("/ranking/list", handler.GetRankingList)
+
+	//修改排行榜记录
+	r.POST("/ranking/update", handler.UpdateRankingRecord)
+
 	r.Run(":8080")
 }
 
