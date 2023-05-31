@@ -69,6 +69,22 @@ func (r *RankingRecordModel) GetRankingRecordList(ctx context.Context, cmd *type
 	sortMap := bson.D{{"damage", -1}}
 	filter := bson.M{}
 
+	if cmd.RoleUID != 0 {
+		filter["role_uid"] = cmd.RoleUID
+	}
+
+	if cmd.RoleName != "" {
+		filter["role_name"] = cmd.RoleName
+	}
+
+	if cmd.Occupation != "" {
+		filter["occupation"] = cmd.Occupation
+	}
+
+	if cmd.AreaService != "" {
+		filter["area_service"] = cmd.AreaService
+	}
+
 	_, err := coll.CountDocuments(ctx, filter)
 	if err != nil {
 		return nil, err

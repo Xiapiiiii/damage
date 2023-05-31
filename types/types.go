@@ -53,7 +53,7 @@ type GetVisitsResp struct {
 type GetRankingReq struct {
 	RoleUID     int64  `form:"role_uid"`
 	RoleName    string `form:"role_name"`
-	Occupation  int64  `form:"occupation"`
+	Occupation  string `form:"occupation"`
 	AreaService string `form:"area_service"`
 }
 
