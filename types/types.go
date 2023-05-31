@@ -67,7 +67,7 @@ type RankingRespData struct {
 	ID          string  `json:"id"`
 	RoleUID     int64   `json:"role_uid"`
 	RoleName    string  `json:"role_name"`
-	Occupation  int64   `json:"occupation"`
+	Occupation  string  `json:"occupation"`
 	AreaService string  `json:"area_service"`
 	Damage      float64 `json:"damage"`
 }
@@ -76,7 +76,7 @@ type UpdateRankingReq struct {
 	ID          string  `form:"id"`
 	RoleUID     int64   `form:"role_uid"`
 	RoleName    string  `form:"role_name"`
-	Occupation  int64   `form:"occupation"`
+	Occupation  string  `form:"occupation"`
 	AreaService string  `form:"area_service"`
 	Damage      float64 `form:"damage"`
 }

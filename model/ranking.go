@@ -22,7 +22,7 @@ type RankingRecord struct {
 	ID          primitive.ObjectID `bson:"_id,omitempty"`
 	RoleUID     int64              `bson:"role_uid"`
 	RoleName    string             `bson:"role_name"`
-	Occupation  int64              `bson:"occupation"`
+	Occupation  string             `bson:"occupation"`
 	AreaService string             `bson:"area_service"`
 	Damage      float64            `bson:"damage"`
 	CreatedAt   time.Time          `bson:"created_at"`

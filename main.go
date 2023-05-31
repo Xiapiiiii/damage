@@ -43,7 +43,7 @@ func main() {
 
 	//获取排行榜
 	r.POST("/ranking/list", handler.GetRankingList)
-
+	r.POST("api/ranking/list", handler.GetRankingList)
 	//修改排行榜记录
 	r.POST("/ranking/update", handler.UpdateRankingRecord)
 
