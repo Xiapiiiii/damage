@@ -15,29 +15,29 @@ const (
 
 // PVEFixM PVE修正系数
 var PVEFixM = map[int64]float64{
-	ImageOfGod:         1.05,
-	RiverOfBlood:       1.09,
-	DragonMinding:      1.12,
-	DragonMindingLight: 1.12,
-	SimpleQuestion:     1.1,
-	NineSpirits:        1.12,
-	TheMystery:         1.13,
-	BrokenDreams:       1.1,
-	HighTone:           1.05,
-	GarmentOfIron:      1.1,
+	ImageOfGod:         1.18,
+	RiverOfBlood:       1.20,
+	DragonMinding:      1.23,
+	DragonMindingLight: 1.23,
+	SimpleQuestion:     1.265,
+	NineSpirits:        1.288,
+	TheMystery:         1.04,
+	BrokenDreams:       1.23,
+	HighTone:           1.10,
+	GarmentOfIron:      1.265,
 }
 
 // DefeatFixM 克敌系数修正
 var DefeatFixM = map[int64]float64{
-	ImageOfGod:         0.7,
+	ImageOfGod:         0.8,
 	RiverOfBlood:       0.8,
-	DragonMinding:      0.7,
-	DragonMindingLight: 0.7,
+	DragonMinding:      0.8,
+	DragonMindingLight: 0.8,
 	SimpleQuestion:     0.9,
 	NineSpirits:        0.9,
 	TheMystery:         0.7,
-	BrokenDreams:       0.7,
-	HighTone:           0.7,
+	BrokenDreams:       1,
+	HighTone:           0.75,
 	GarmentOfIron:      0.9,
 }
 
@@ -454,36 +454,72 @@ func newTheMystery() map[string]SkillBaseCoefficient {
 // 碎梦系数
 func newBrokenDreams() map[string]SkillBaseCoefficient {
 	brokenDreams := make(map[string]SkillBaseCoefficient)
-	brokenDreams["鸣玉落"] = SkillBaseCoefficient{
-		AttackCoefficient:   0.55 * 1.2,
-		ElementsCoefficient: 0.57,
-		ShootRate:           2.8 * 1.1,
+	brokenDreams["一梦千一"] = SkillBaseCoefficient{
+		AttackCoefficient:   1.48 * 1.2,
+		ElementsCoefficient: 1.386,
+		ShootRate:           0.426 * 1.1,
+		FactorOfDefeat:      1,
 	}
-	brokenDreams["醉舞狂歌"] = SkillBaseCoefficient{
-		AttackCoefficient:   0.463 * 1.2,
-		ElementsCoefficient: 0.472,
-		ShootRate:           1.43 * 1.1,
+	brokenDreams["百裂千击"] = SkillBaseCoefficient{
+		AttackCoefficient:   0.308 * 1.2 * 1.1,
+		ElementsCoefficient: 0.288,
+		ShootRate:           1.441 * 0.8 * 1.07 * 1.1 * 1.25,
+		FactorOfDefeat:      0.6,
 	}
-	//频率需继续测试
-	brokenDreams["霸王卸甲"] = SkillBaseCoefficient{
-		AttackCoefficient:   0.98 * 1.2,
-		ElementsCoefficient: 1.02,
-		ShootRate:           0.55 * 1.1,
+
+	brokenDreams["断肠"] = SkillBaseCoefficient{
+		AttackCoefficient:   0.440 * 1.1 * 1.15,
+		ElementsCoefficient: 0.416,
+		ShootRate:           0.64 * 1.25 * 1.1,
+		FactorOfDefeat:      0.75,
 	}
-	brokenDreams["霓裳惊鸿"] = SkillBaseCoefficient{
-		AttackCoefficient:   1.49 * 1.2,
-		ElementsCoefficient: 1.53,
-		ShootRate:           0.23 * 1.1,
+	brokenDreams["荆轲现匕"] = SkillBaseCoefficient{
+		AttackCoefficient:   2.62 * 1.15 * 1.1,
+		ElementsCoefficient: 2.45,
+		ShootRate:           0.156 * 1.25 * 1.1 * 0.75,
+		FactorOfDefeat:      1,
 	}
-	brokenDreams["金沙狂舞"] = SkillBaseCoefficient{
-		AttackCoefficient:   2.1 * 1.2,
-		ElementsCoefficient: 2.2,
-		ShootRate:           0.155 * 1.1,
+	brokenDreams["碧血丹青"] = SkillBaseCoefficient{
+		AttackCoefficient:   0.638 * 1.1 * 1.1,
+		ElementsCoefficient: 0.597,
+		ShootRate:           0.516 * 1.1,
+		FactorOfDefeat:      0.75,
 	}
-	brokenDreams["十面埋伏"] = SkillBaseCoefficient{
-		AttackCoefficient:   0.82 * 1.2,
-		ElementsCoefficient: 0.85,
-		ShootRate:           0.31 * 1.1,
+	brokenDreams["无尽闪"] = SkillBaseCoefficient{
+		AttackCoefficient:   0.617 * 1.1 * 1.1,
+		ElementsCoefficient: 0.577,
+		ShootRate:           0.459 * 1.1,
+		FactorOfDefeat:      0.9,
+	}
+	brokenDreams["碎影"] = SkillBaseCoefficient{
+		AttackCoefficient:   0.74 * 1.1 * 1.1,
+		ElementsCoefficient: 0.693,
+		ShootRate:           0.40,
+		FactorOfDefeat:      1,
+	}
+	brokenDreams["月影碎空"] = SkillBaseCoefficient{
+		AttackCoefficient:   1.21 * 1.1 * 1.1,
+		ElementsCoefficient: 1.155,
+		ShootRate:           0.1393 * 1.25 * 1.1,
+		FactorOfDefeat:      1,
+	}
+	brokenDreams["黯灭"] = SkillBaseCoefficient{
+		AttackCoefficient:   1.047 * 1.1 * 1.1,
+		ElementsCoefficient: 1,
+		ShootRate:           0.115 * 1.25 * 1.1 * 1.65,
+		FactorOfDefeat:      1,
+	}
+	brokenDreams["无尽灭"] = SkillBaseCoefficient{
+		AttackCoefficient:   0.986 * 1.1 * 1.1,
+		ElementsCoefficient: 0.924,
+		ShootRate:           0.065 * 1.4 * 1.1,
+		FactorOfDefeat:      1,
+	}
+	brokenDreams["十击"] = SkillBaseCoefficient{
+		AttackCoefficient:   0.346 * 1.1 * 1.1,
+		ElementsCoefficient: 0.324,
+		ShootRate:           0.55 * 1.25 * 1.1,
+		FactorOfDefeat:      0.65,
 	}
 
 	return brokenDreams

@@ -43,7 +43,7 @@ func Test_SecondDamageComputation(t *testing.T) {
 
 }
 
-// 夏天神相 3.6 绝世 3
+// 夏天神相 3.6 绝世 3.4
 func Test_SecondDamageComputation1(t *testing.T) {
 	skillCoefficients := attribute_value.NewSkillCoefficient(attribute_value.ImageOfGod)
 
@@ -115,25 +115,25 @@ func Test_SecondDamageComputation2(t *testing.T) {
 
 }
 
-// 龙 4.6 绝世3.9
+// 龙 5.38 绝世4.78
 func Test_SecondDamageComputation3(t *testing.T) {
 	skillCoefficients := attribute_value.NewSkillCoefficient(attribute_value.DragonMindingLight)
 
 	character := attribute_value.BasicCharacter{
-		MinAttack:              3761,
-		MaxAttack:              5410,
-		ElementalDamage:        2414,
-		FixedDefeat:            1517,
-		PercentageDefeat:       0.27,
-		MonsterPenetration:     1398,
-		CriticalHitProbability: 269,
+		MinAttack:              4011,
+		MaxAttack:              5802,
+		ElementalDamage:        1650,
+		FixedDefeat:            2330,
+		PercentageDefeat:       0.25,
+		MonsterPenetration:     1490,
+		CriticalHitProbability: 318,
 		CriticalHitDamage:      0.55,
-		FixedBrokenGuard:       1159,
+		FixedBrokenGuard:       1298,
 		PercentageBrokenGuard:  0.0,
 	}
 
 	req := types.CharacterDataReq{
-		TestType:   3,
+		TestType:   2,
 		Occupation: attribute_value.DragonMindingLight,
 	}
 
@@ -207,6 +207,42 @@ func Test_SecondDamageComputation5(t *testing.T) {
 	req := types.CharacterDataReq{
 		TestType:   3,
 		Occupation: attribute_value.HighTone,
+	}
+
+	secondDamage := damage.FinalSecondDamageComputation(req, character, skillCoefficients)
+
+	sum := 0.0
+	for _, v := range secondDamage {
+		sum += v
+	}
+	fmt.Printf("%f万 \n", sum/10000)
+
+	for k, v := range secondDamage {
+		fmt.Printf("技能:%s 秒伤:%f 万  占比: %f  \n", k, v/10000, v/sum)
+	}
+
+}
+
+// 碎梦 绝世2.9
+func Test_SecondDamageComputation6(t *testing.T) {
+	skillCoefficients := attribute_value.NewSkillCoefficient(attribute_value.BrokenDreams)
+
+	character := attribute_value.BasicCharacter{
+		MinAttack:              3659,
+		MaxAttack:              5359,
+		ElementalDamage:        2100,
+		FixedDefeat:            1111,
+		PercentageDefeat:       0.24,
+		MonsterPenetration:     1300,
+		CriticalHitProbability: 324,
+		CriticalHitDamage:      0.73,
+		FixedBrokenGuard:       889,
+		PercentageBrokenGuard:  0.0,
+	}
+
+	req := types.CharacterDataReq{
+		TestType:   3,
+		Occupation: attribute_value.BrokenDreams,
 	}
 
 	secondDamage := damage.FinalSecondDamageComputation(req, character, skillCoefficients)

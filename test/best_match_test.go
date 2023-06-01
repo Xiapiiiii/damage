@@ -9,18 +9,18 @@ import (
 )
 
 func Test_imageOfGodMatch(t *testing.T) {
-	skillCoefficients := attribute_value.NewSkillCoefficient(attribute_value.ImageOfGod)
+	skillCoefficients := attribute_value.NewSkillCoefficient(attribute_value.RiverOfBlood)
 
 	equipmentPool := attribute_value.GenerationEquipmentPool()
 	//fmt.Println(equipmentPool)
 	roleEquipmentPool := attribute_value.GenerationRoleEquipmentPool(equipmentPool)
 	//fmt.Println(roleEquipmentPool)
 	character := attribute_value.BasicCharacter{
-		MinAttack:              3673,
-		MaxAttack:              5318,
-		ElementalDamage:        1970,
-		FixedDefeat:            600,
-		PercentageDefeat:       0.234,
+		MinAttack:              3498,
+		MaxAttack:              5065,
+		ElementalDamage:        1900,
+		FixedDefeat:            611,
+		PercentageDefeat:       0.237,
 		MonsterPenetration:     1504,
 		CriticalHitProbability: 370,
 		CriticalHitDamage:      0.58,
@@ -30,7 +30,7 @@ func Test_imageOfGodMatch(t *testing.T) {
 
 	req := types.CharacterDataReq{
 		TestType:   3,
-		Occupation: attribute_value.ImageOfGod,
+		Occupation: attribute_value.RiverOfBlood,
 	}
 
 	c := attribute_value.BasicCharacter{}
