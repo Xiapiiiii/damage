@@ -79,7 +79,7 @@ func Test_SecondDamageComputation1(t *testing.T) {
 
 }
 
-// 芥末九灵 2.77
+// 加菲猫九灵 2.77
 func Test_SecondDamageComputation2(t *testing.T) {
 	skillCoefficients := attribute_value.NewSkillCoefficient(attribute_value.NineSpirits)
 
@@ -123,7 +123,7 @@ func Test_SecondDamageComputation3(t *testing.T) {
 		MinAttack:              4011,
 		MaxAttack:              5802,
 		ElementalDamage:        1650,
-		FixedDefeat:            2330,
+		FixedDefeat:            2330 - 251,
 		PercentageDefeat:       0.25,
 		MonsterPenetration:     1490,
 		CriticalHitProbability: 318,
@@ -243,6 +243,42 @@ func Test_SecondDamageComputation6(t *testing.T) {
 	req := types.CharacterDataReq{
 		TestType:   3,
 		Occupation: attribute_value.BrokenDreams,
+	}
+
+	secondDamage := damage.FinalSecondDamageComputation(req, character, skillCoefficients)
+
+	sum := 0.0
+	for _, v := range secondDamage {
+		sum += v
+	}
+	fmt.Printf("%f万 \n", sum/10000)
+
+	for k, v := range secondDamage {
+		fmt.Printf("技能:%s 秒伤:%f 万  占比: %f  \n", k, v/10000, v/sum)
+	}
+
+}
+
+// 铁衣 h3.41  绝世2.99
+func Test_SecondDamageComputation7(t *testing.T) {
+	skillCoefficients := attribute_value.NewSkillCoefficient(attribute_value.GarmentOfIron)
+
+	character := attribute_value.BasicCharacter{
+		MinAttack:              4965,
+		MaxAttack:              7098,
+		ElementalDamage:        2450,
+		FixedDefeat:            659,
+		PercentageDefeat:       0.337,
+		MonsterPenetration:     1474,
+		CriticalHitProbability: 376,
+		CriticalHitDamage:      0.55,
+		FixedBrokenGuard:       687,
+		PercentageBrokenGuard:  0.0,
+	}
+
+	req := types.CharacterDataReq{
+		TestType:   3,
+		Occupation: attribute_value.GarmentOfIron,
 	}
 
 	secondDamage := damage.FinalSecondDamageComputation(req, character, skillCoefficients)

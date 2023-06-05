@@ -22,9 +22,9 @@ var PVEFixM = map[int64]float64{
 	SimpleQuestion:     1.265,
 	NineSpirits:        1.288,
 	TheMystery:         1.04,
-	BrokenDreams:       1.23,
+	BrokenDreams:       1.25,
 	HighTone:           1.10,
-	GarmentOfIron:      1.265,
+	GarmentOfIron:      1 * 1.02 * 1.15 * 1.1,
 }
 
 // DefeatFixM 克敌系数修正
@@ -33,12 +33,12 @@ var DefeatFixM = map[int64]float64{
 	RiverOfBlood:       0.8,
 	DragonMinding:      0.8,
 	DragonMindingLight: 0.8,
-	SimpleQuestion:     0.9,
-	NineSpirits:        0.9,
+	SimpleQuestion:     0.8,
+	NineSpirits:        0.4,
 	TheMystery:         0.7,
-	BrokenDreams:       1,
+	BrokenDreams:       1, //已修正
 	HighTone:           0.75,
-	GarmentOfIron:      0.9,
+	GarmentOfIron:      1, //已修正
 }
 
 // SkillBaseCoefficient 技能基础系数
@@ -525,55 +525,55 @@ func newBrokenDreams() map[string]SkillBaseCoefficient {
 	return brokenDreams
 }
 
-// 九灵系数
+// 九灵系数(独登台)
 func newNineSpirits() map[string]SkillBaseCoefficient {
 	nineSpirits := make(map[string]SkillBaseCoefficient)
 	nineSpirits["环灵决"] = SkillBaseCoefficient{
 		AttackCoefficient:   0.961,
 		ElementsCoefficient: 0.735,
-		ShootRate:           0.85,
+		ShootRate:           0.85 * 1.25,
 		FactorOfDefeat:      1.0,
 	}
 	nineSpirits["破梦"] = SkillBaseCoefficient{
 		AttackCoefficient:   2.69,
 		ElementsCoefficient: 2.57,
-		ShootRate:           0.26,
+		ShootRate:           0.26 * 1.25,
 		FactorOfDefeat:      1.0,
 	}
 	nineSpirits["灵犀三现"] = SkillBaseCoefficient{
 		AttackCoefficient:   1.12,
 		ElementsCoefficient: 1.07,
-		ShootRate:           0.58,
+		ShootRate:           0.58 * 1.25,
 		FactorOfDefeat:      1.0,
 	}
 	nineSpirits["蚀骨销魂"] = SkillBaseCoefficient{
 		AttackCoefficient:   0.293,
 		ElementsCoefficient: 0.26,
-		ShootRate:           1.1,
+		ShootRate:           1.1 * 1.25,
 		FactorOfDefeat:      1.0,
 	}
 	nineSpirits["黄泉之烬"] = SkillBaseCoefficient{
 		AttackCoefficient:   0.16,
 		ElementsCoefficient: 0.14,
-		ShootRate:           0.9,
+		ShootRate:           0.9 * 1.25,
 		FactorOfDefeat:      1.0,
 	}
 	nineSpirits["刺魂击"] = SkillBaseCoefficient{
 		AttackCoefficient:   1.46,
 		ElementsCoefficient: 1.43,
-		ShootRate:           0.20,
+		ShootRate:           0.20 * 1.25,
 		FactorOfDefeat:      1.0,
 	}
 	nineSpirits["长风散魂"] = SkillBaseCoefficient{
 		AttackCoefficient:   1.73,
 		ElementsCoefficient: 1.68,
-		ShootRate:           0.068,
+		ShootRate:           0.068 * 1.25,
 		FactorOfDefeat:      1.0,
 	}
 	nineSpirits["蛊种"] = SkillBaseCoefficient{
 		AttackCoefficient:   0.247,
 		ElementsCoefficient: 0.22,
-		ShootRate:           0.45,
+		ShootRate:           0.45 * 1.25,
 		FactorOfDefeat:      1.0,
 	}
 
@@ -583,45 +583,59 @@ func newNineSpirits() map[string]SkillBaseCoefficient {
 // 铁衣(破)系数
 func newGarmentOfIron() map[string]SkillBaseCoefficient {
 	garmentOfIron := make(map[string]SkillBaseCoefficient)
-	garmentOfIron["环灵决"] = SkillBaseCoefficient{
-		AttackCoefficient:   0.961,
-		ElementsCoefficient: 0.765,
-		ShootRate:           0.85 * 1.2,
+	garmentOfIron["无影拳"] = SkillBaseCoefficient{
+		AttackCoefficient:   0.599,
+		ElementsCoefficient: 0.556,
+		ShootRate:           0.95,
+		FactorOfDefeat:      0.75,
 	}
-	garmentOfIron["破梦"] = SkillBaseCoefficient{
-		AttackCoefficient:   2.69,
-		ElementsCoefficient: 2.78,
-		ShootRate:           0.26 * 1.2,
+	garmentOfIron["练火拳"] = SkillBaseCoefficient{
+		AttackCoefficient:   2.76,
+		ElementsCoefficient: 3.84,
+		ShootRate:           0.182,
+		FactorOfDefeat:      1.0,
 	}
-	garmentOfIron["灵犀三现"] = SkillBaseCoefficient{
-		AttackCoefficient:   1.12,
-		ElementsCoefficient: 1.15,
-		ShootRate:           0.58 * 1.2,
+	garmentOfIron["余震"] = SkillBaseCoefficient{
+		AttackCoefficient:   0.429,
+		ElementsCoefficient: 0.4,
+		ShootRate:           1,
+		FactorOfDefeat:      1,
 	}
-	garmentOfIron["蚀骨销魂"] = SkillBaseCoefficient{
-		AttackCoefficient:   0.293,
-		ElementsCoefficient: 0.3,
-		ShootRate:           1.1 * 1.2,
+	garmentOfIron["劈云拳"] = SkillBaseCoefficient{
+		AttackCoefficient:   0.479,
+		ElementsCoefficient: 0.444,
+		ShootRate:           0.273 * 3,
+		FactorOfDefeat:      1.0,
 	}
-	garmentOfIron["黄泉之烬"] = SkillBaseCoefficient{
-		AttackCoefficient:   0.16,
-		ElementsCoefficient: 0.17,
-		ShootRate:           0.9 * 1.2,
+	garmentOfIron["旋风腿"] = SkillBaseCoefficient{
+		AttackCoefficient:   1.38,
+		ElementsCoefficient: 1.28,
+		ShootRate:           0.30,
+		FactorOfDefeat:      1.0,
 	}
-	garmentOfIron["刺魂击"] = SkillBaseCoefficient{
-		AttackCoefficient:   1.46,
-		ElementsCoefficient: 1.48,
-		ShootRate:           0.20 * 1.2,
+	garmentOfIron["开山拳"] = SkillBaseCoefficient{
+		AttackCoefficient:   4.37,
+		ElementsCoefficient: 4.06,
+		ShootRate:           0.1,
+		FactorOfDefeat:      1.0,
 	}
-	garmentOfIron["长风散魂"] = SkillBaseCoefficient{
-		AttackCoefficient:   1.73,
-		ElementsCoefficient: 1.75,
-		ShootRate:           0.068 * 1.2,
+	garmentOfIron["一以贯之"] = SkillBaseCoefficient{
+		AttackCoefficient:   3.355 * 1.4,
+		ElementsCoefficient: 3.11 * 1.4,
+		ShootRate:           0.075,
+		FactorOfDefeat:      1.0,
 	}
-	garmentOfIron["蛊种"] = SkillBaseCoefficient{
-		AttackCoefficient:   0.247,
-		ElementsCoefficient: 0.25,
-		ShootRate:           0.45 * 1.2,
+	garmentOfIron["冲劲寸拳"] = SkillBaseCoefficient{
+		AttackCoefficient:   0.0,
+		ElementsCoefficient: 0.0,
+		ShootRate:           0.0,
+		FactorOfDefeat:      1.0,
+	}
+	garmentOfIron["金刚拳"] = SkillBaseCoefficient{
+		AttackCoefficient:   0.0,
+		ElementsCoefficient: 0.0,
+		ShootRate:           0.0,
+		FactorOfDefeat:      1.0,
 	}
 
 	return garmentOfIron
