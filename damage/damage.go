@@ -29,6 +29,11 @@ func SecondDamageComputation(req types.CharacterDataReq, skillCoefficient attrib
 		character.PercentageBrokenGuard = 0
 	}
 
+	//百分比防御校准
+	if character.PercentageBrokenGuard > 1 {
+		character.PercentageBrokenGuard = 1
+	}
+
 	//防御系数计算
 	defenseCoefficient := 3588 / (3588 + (basicMonster.Defense-character.FixedBrokenGuard)*(1-character.PercentageBrokenGuard))
 

@@ -123,7 +123,7 @@ func Test_SecondDamageComputation3(t *testing.T) {
 		MinAttack:              4011,
 		MaxAttack:              5802,
 		ElementalDamage:        1650,
-		FixedDefeat:            2330 - 251,
+		FixedDefeat:            2330,
 		PercentageDefeat:       0.25,
 		MonsterPenetration:     1490,
 		CriticalHitProbability: 318,
@@ -133,7 +133,7 @@ func Test_SecondDamageComputation3(t *testing.T) {
 	}
 
 	req := types.CharacterDataReq{
-		TestType:   2,
+		TestType:   3,
 		Occupation: attribute_value.DragonMindingLight,
 	}
 
