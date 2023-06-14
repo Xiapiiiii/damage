@@ -1,18 +1,18 @@
 package types
 
 type CharacterDataReq struct {
-	Occupation             int64   `form:"occupation" binding:"required"`               //职业
-	TestType               int64   `form:"test_type" binding:"required"`                //副本类型
-	MinAttack              float64 `form:"min_attack" binding:"required"`               //最小攻击
-	MaxAttack              float64 `form:"max_attack" binding:"required"`               //最大攻击
-	ElementalDamage        float64 `form:"elemental_damage" binding:"required"`         //全元素攻击
-	FixedDefeat            float64 `form:"fixed_defeat" `                               //克敌
-	PercentageDefeat       float64 `form:"percentage_defeat" `                          //百分比克敌
-	MonsterPenetration     float64 `form:"monster_penetration" binding:"required"`      //怪物穿透
-	CriticalHitProbability float64 `form:"critical_hit_probability" binding:"required"` //会心
-	CriticalHitDamage      float64 `form:"critical_hit_damage" binding:"required"`      //会心伤害
-	FixedBrokenGuard       float64 `form:"fixed_broken_guard" `                         //固定破防
-	PercentageBrokenGuard  float64 `form:"percentage_broken_guard"`                     //百分比破防
+	Occupation             int64   `form:"occupation" binding:"required"`     //职业
+	TestType               int64   `form:"test_type" binding:"required"`      //副本类型
+	MinAttack              float64 `form:"min_attack,optional"`               //最小攻击
+	MaxAttack              float64 `form:"max_attack,optional"`               //最大攻击
+	ElementalDamage        float64 `form:"elemental_damage,optional"`         //全元素攻击
+	FixedDefeat            float64 `form:"fixed_defeat,optional"`             //克敌
+	PercentageDefeat       float64 `form:"percentage_defeat,optional"`        //百分比克敌
+	MonsterPenetration     float64 `form:"monster_penetration,optional"`      //怪物穿透
+	CriticalHitProbability float64 `form:"critical_hit_probability,optional"` //会心
+	CriticalHitDamage      float64 `form:"critical_hit_damage,optional"`      //会心伤害
+	FixedBrokenGuard       float64 `form:"fixed_broken_guard,optional"`       //固定破防
+	PercentageBrokenGuard  float64 `form:"percentage_broken_guard,optional"`  //百分比破防
 }
 
 type CharacterDataResp struct {
@@ -84,4 +84,14 @@ type UpdateRankingReq struct {
 type UpdateRankingResp struct {
 	Code    int64  `json:"code"`
 	Message string `json:"message"`
+}
+
+// 生活收益计算
+
+type GetLifeRevenueReq struct {
+	LifeType      int64 `form:"life_type"`     //生活职业类型
+	ProductType   int64 `form:"product"`       //制作产物类型
+	ProductPrice  int64 `json:"product_price"` //产物价格
+	MaterialPrice int64 `json:"material_type"` //材料类型
+
 }

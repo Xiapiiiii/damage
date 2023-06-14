@@ -60,7 +60,7 @@ func SecondDamageComputation(req types.CharacterDataReq, skillCoefficient attrib
 	defeatDamage := character.FixedDefeat *
 		monsterCoefficient *
 		attribute_value.DefeatFixM[req.Occupation] *
-		skillCoefficient.FactorOfDefeat
+		skillCoefficient.FactorOfDefeat * defenseCoefficient
 
 	secondDamage := (attackDamage + elementalDamage + defeatDamage) *
 		skillCoefficient.ShootRate *

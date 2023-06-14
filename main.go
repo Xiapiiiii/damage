@@ -47,6 +47,7 @@ func main() {
 	//修改排行榜记录
 	r.POST("/ranking/update", handler.UpdateRankingRecord)
 
+	r.POST("/life/revenue", handler.GetLifeRevenue)
 	r.Run(":8080")
 }
 

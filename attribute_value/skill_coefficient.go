@@ -15,30 +15,30 @@ const (
 
 // PVEFixM PVE修正系数
 var PVEFixM = map[int64]float64{
-	ImageOfGod:         1.23,
-	RiverOfBlood:       1.22,
-	DragonMinding:      1.24,
-	DragonMindingLight: 1.24,
-	SimpleQuestion:     1.265,
-	NineSpirits:        1.26,
-	TheMystery:         1.04,
-	BrokenDreams:       1.25,
-	HighTone:           1.10,
-	GarmentOfIron:      1 * 1.02 * 1.15 * 1.1,
+	ImageOfGod:         1.20,
+	RiverOfBlood:       1.26,
+	DragonMinding:      1.114,
+	DragonMindingLight: 1.114,
+	SimpleQuestion:     1.15,
+	NineSpirits:        1.23,
+	TheMystery:         1.30,
+	BrokenDreams:       1.26,
+	HighTone:           1.15,
+	GarmentOfIron:      1 * 1.15 * 1.08,
 }
 
 // DefeatFixM 克敌系数修正
 var DefeatFixM = map[int64]float64{
-	ImageOfGod:         0.76,
-	RiverOfBlood:       0.75,
-	DragonMinding:      0.75,
-	DragonMindingLight: 0.75,
-	SimpleQuestion:     0.8,
-	NineSpirits:        0.4,
-	TheMystery:         0.7,
-	BrokenDreams:       1, //已修正
-	HighTone:           0.75,
-	GarmentOfIron:      1, //已修正
+	ImageOfGod:         0.76 * 1.4,
+	RiverOfBlood:       0.75 * 1.4,
+	DragonMinding:      1,
+	DragonMindingLight: 0.75 * 1.5 * 1.1,
+	SimpleQuestion:     0.75 * 1.4,
+	NineSpirits:        0.5 * 1.4,
+	TheMystery:         0.47 * 1.4,
+	BrokenDreams:       1 * 1.12, //已修正
+	HighTone:           1,
+	GarmentOfIron:      1 * 1.4, //已修正
 }
 
 // SkillBaseCoefficient 技能基础系数
