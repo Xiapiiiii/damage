@@ -78,7 +78,7 @@ func Test_SecondDamageComputation0(t *testing.T) {
 
 }
 
-// 夏天神相 3.6 绝世 3.4
+// 夏天神相 3.6 绝世 3.49
 func Test_SecondDamageComputation1(t *testing.T) {
 	skillCoefficients := attribute_value.NewSkillCoefficient(attribute_value.ImageOfGod)
 

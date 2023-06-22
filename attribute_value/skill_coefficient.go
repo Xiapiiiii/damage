@@ -15,7 +15,7 @@ const (
 
 // PVEFixM PVE修正系数
 var PVEFixM = map[int64]float64{
-	ImageOfGod:         1.20,
+	ImageOfGod:         1.215,
 	RiverOfBlood:       1.26,
 	DragonMinding:      1.114,
 	DragonMindingLight: 1.114,
@@ -29,8 +29,8 @@ var PVEFixM = map[int64]float64{
 
 // DefeatFixM 克敌系数修正
 var DefeatFixM = map[int64]float64{
-	ImageOfGod:         0.76 * 1.4,
-	RiverOfBlood:       0.75 * 1.4,
+	ImageOfGod:         1,
+	RiverOfBlood:       1,
 	DragonMinding:      1,
 	DragonMindingLight: 0.75 * 1.5 * 1.1,
 	SimpleQuestion:     0.75 * 1.4,
