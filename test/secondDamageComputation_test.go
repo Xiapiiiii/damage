@@ -8,7 +8,7 @@ import (
 	"testing"
 )
 
-// 玄机 元素 绝世3.3
+// 玄机 元素 绝世3.32
 func Test_SecondDamageComputation(t *testing.T) {
 	skillCoefficients := attribute_value.NewSkillCoefficient(attribute_value.TheMystery)
 	character := attribute_value.BasicCharacter{
@@ -43,7 +43,7 @@ func Test_SecondDamageComputation(t *testing.T) {
 
 }
 
-// 玄机 克敌 绝世3
+// 玄机 克敌 绝世3.03
 func Test_SecondDamageComputation0(t *testing.T) {
 	skillCoefficients := attribute_value.NewSkillCoefficient(attribute_value.TheMystery)
 	character := attribute_value.BasicCharacter{
@@ -78,7 +78,7 @@ func Test_SecondDamageComputation0(t *testing.T) {
 
 }
 
-// 夏天神相 3.6 绝世 3.49
+// 夏天神相 绝世 3.48
 func Test_SecondDamageComputation1(t *testing.T) {
 	skillCoefficients := attribute_value.NewSkillCoefficient(attribute_value.ImageOfGod)
 
@@ -114,7 +114,7 @@ func Test_SecondDamageComputation1(t *testing.T) {
 
 }
 
-// 加菲猫九灵 4.66
+// 加菲猫九灵 5.014
 func Test_SecondDamageComputation2(t *testing.T) {
 	skillCoefficients := attribute_value.NewSkillCoefficient(attribute_value.NineSpirits)
 
@@ -150,7 +150,7 @@ func Test_SecondDamageComputation2(t *testing.T) {
 
 }
 
-// 龙 克敌 绝世4.99
+// 龙 克敌 绝世5.02
 func Test_SecondDamageComputation3(t *testing.T) {
 	skillCoefficients := attribute_value.NewSkillCoefficient(attribute_value.DragonMindingLight)
 
@@ -186,7 +186,7 @@ func Test_SecondDamageComputation3(t *testing.T) {
 
 }
 
-// 龙 元素 绝世5.15
+// 龙 元素 绝世5.18
 func Test_SecondDamageComputation31(t *testing.T) {
 	skillCoefficients := attribute_value.NewSkillCoefficient(attribute_value.DragonMindingLight)
 
@@ -222,7 +222,7 @@ func Test_SecondDamageComputation31(t *testing.T) {
 
 }
 
-// 龙 元素 绝世4.99
+// 龙 元素 绝世4.93
 func Test_SecondDamageComputation32(t *testing.T) {
 	skillCoefficients := attribute_value.NewSkillCoefficient(attribute_value.DragonMindingLight)
 
@@ -258,7 +258,7 @@ func Test_SecondDamageComputation32(t *testing.T) {
 
 }
 
-// 血河 绝世3.78
+// 血河 绝世3.728
 func Test_SecondDamageComputation4(t *testing.T) {
 	skillCoefficients := attribute_value.NewSkillCoefficient(attribute_value.RiverOfBlood)
 
@@ -294,7 +294,79 @@ func Test_SecondDamageComputation4(t *testing.T) {
 
 }
 
-// 碎梦 绝世4.04
+// 血河 绝世 1
+func Test_SecondDamageComputation4T(t *testing.T) {
+	skillCoefficients := attribute_value.NewSkillCoefficient(attribute_value.RiverOfBlood)
+
+	character := attribute_value.BasicCharacter{
+		MinAttack:              4037,
+		MaxAttack:              5882,
+		ElementalDamage:        1781,
+		FixedDefeat:            1775,
+		PercentageDefeat:       0.23,
+		MonsterPenetration:     1645,
+		CriticalHitProbability: 205,
+		CriticalHitDamage:      0.74,
+		FixedBrokenGuard:       877,
+		PercentageBrokenGuard:  0.0,
+	}
+
+	req := types.CharacterDataReq{
+		TestType:   3,
+		Occupation: attribute_value.RiverOfBlood,
+	}
+
+	secondDamage := damage.FinalSecondDamageComputation(req, character, skillCoefficients)
+
+	sum := 0.0
+	for _, v := range secondDamage {
+		sum += v
+	}
+	fmt.Printf("%f万 \n", sum/10000)
+
+	for k, v := range secondDamage {
+		fmt.Printf("技能:%s 秒伤:%f 万  占比: %f  \n", k, v/10000, v/sum)
+	}
+
+}
+
+// 血河 绝世 1.05
+func Test_SecondDamageComputation4T1(t *testing.T) {
+	skillCoefficients := attribute_value.NewSkillCoefficient(attribute_value.RiverOfBlood)
+
+	character := attribute_value.BasicCharacter{
+		MinAttack:              4037,
+		MaxAttack:              5882,
+		ElementalDamage:        2427,
+		FixedDefeat:            971,
+		PercentageDefeat:       0.23,
+		MonsterPenetration:     1645,
+		CriticalHitProbability: 205,
+		CriticalHitDamage:      0.74,
+		FixedBrokenGuard:       877,
+		PercentageBrokenGuard:  0.0,
+	}
+
+	req := types.CharacterDataReq{
+		TestType:   3,
+		Occupation: attribute_value.RiverOfBlood,
+	}
+
+	secondDamage := damage.FinalSecondDamageComputation(req, character, skillCoefficients)
+
+	sum := 0.0
+	for _, v := range secondDamage {
+		sum += v
+	}
+	fmt.Printf("%f万 \n", sum/10000)
+
+	for k, v := range secondDamage {
+		fmt.Printf("技能:%s 秒伤:%f 万  占比: %f  \n", k, v/10000, v/sum)
+	}
+
+}
+
+// 碎梦 绝世4.07
 func Test_SecondDamageComputation6(t *testing.T) {
 	skillCoefficients := attribute_value.NewSkillCoefficient(attribute_value.BrokenDreams)
 
@@ -330,7 +402,7 @@ func Test_SecondDamageComputation6(t *testing.T) {
 
 }
 
-// 铁衣 h3.41  绝世2.99
+// 铁衣 h3.41  绝世3.027
 func Test_SecondDamageComputation7(t *testing.T) {
 	skillCoefficients := attribute_value.NewSkillCoefficient(attribute_value.GarmentOfIron)
 
@@ -366,7 +438,7 @@ func Test_SecondDamageComputation7(t *testing.T) {
 
 }
 
-// 鸿音 绝世3.88
+// 鸿音 绝世4.05
 func Test_SecondDamageComputation8(t *testing.T) {
 	skillCoefficients := attribute_value.NewSkillCoefficient(attribute_value.HighTone)
 

@@ -54,7 +54,7 @@ func SecondDamageComputation(req types.CharacterDataReq, skillCoefficient attrib
 	//元素伤害
 	elementalDamage := character.ElementalDamage *
 		skillCoefficient.ElementsCoefficient *
-		0.945
+		1
 
 	//克敌附加
 	defeatDamage := character.FixedDefeat *

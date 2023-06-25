@@ -15,25 +15,25 @@ const (
 
 // PVEFixM PVE修正系数
 var PVEFixM = map[int64]float64{
-	ImageOfGod:         1.215,
-	RiverOfBlood:       1.26,
-	DragonMinding:      1.114,
-	DragonMindingLight: 1.114,
-	SimpleQuestion:     1.15,
-	NineSpirits:        1.23,
-	TheMystery:         1.30,
-	BrokenDreams:       1.26,
-	HighTone:           1.15,
-	GarmentOfIron:      1 * 1.15 * 1.08,
+	ImageOfGod:         1.18,
+	RiverOfBlood:       1.25,
+	DragonMinding:      1.08,
+	DragonMindingLight: 1.08,
+	SimpleQuestion:     1.21,
+	NineSpirits:        1.20,
+	TheMystery:         1.27,
+	BrokenDreams:       1.23,
+	HighTone:           1.12,
+	GarmentOfIron:      1 * 1.15 * 1.05,
 }
 
 // DefeatFixM 克敌系数修正
 var DefeatFixM = map[int64]float64{
 	ImageOfGod:         1,
-	RiverOfBlood:       1,
+	RiverOfBlood:       0.8,
 	DragonMinding:      1,
 	DragonMindingLight: 0.75 * 1.5 * 1.1,
-	SimpleQuestion:     0.75 * 1.4,
+	SimpleQuestion:     1,
 	NineSpirits:        0.5 * 1.4,
 	TheMystery:         0.47 * 1.4,
 	BrokenDreams:       1 * 1.12, //已修正
