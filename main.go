@@ -47,7 +47,16 @@ func main() {
 	//修改排行榜记录
 	r.POST("/ranking/update", handler.UpdateRankingRecord)
 
+	//生活技能
 	r.POST("/life/revenue", handler.GetLifeRevenue)
+
+	//注册
+	r.POST("/user/register", handler.CreateUserRegisterInfo)
+	//注册校验
+	r.POST("/user/register/verify")
+	//登录
+	r.POST("/user/login")
+
 	r.Run(":8080")
 }
 

@@ -15,6 +15,11 @@ type CharacterDataReq struct {
 	PercentageBrokenGuard  float64 `form:"percentage_broken_guard,optional"`  //百分比破防
 }
 
+type CommonResp struct {
+	Code    int64  `json:"code"`
+	Message string `json:"message"`
+}
+
 type CharacterDataResp struct {
 	Code    int64            `json:"code"`
 	Message string           `json:"message"`
