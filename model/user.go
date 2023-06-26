@@ -1,11 +1,22 @@
 package model
 
 import (
+	"gorm.io/gorm"
 	"time"
 )
 
+type UserInfoModel struct {
+	BaseModel
+}
+
+func NewUserInfoModel(db *gorm.DB) *UserInfoModel {
+	return &UserInfoModel{
+		BaseModel: BaseModel{db: db},
+	}
+}
+
 type UserInfo struct {
-	ID          int        `gorm:"column:id;not null;auto_increment;primary_key" `
+	ID          int64      `gorm:"column:id;not null;auto_increment;primary_key" `
 	UserName    string     `gorm:"column:user_name;not null;type:varchar(128);comment:'用户昵称'" `
 	UserId      string     `gorm:"column:user_id;not null;type:varchar(50);comment:'用户id'" `
 	PassWord    string     `gorm:"column:pass_word;not null;type:varchar(128);comment:'密码'" `
@@ -17,10 +28,32 @@ type UserInfo struct {
 	LastLoginAt time.Time  `gorm:"column:last_login_at" `
 	LastLoginIp string     `gorm:"column:last_login_ip;not null;type:varchar(50);comment:'最后登录ip'" `
 	CreatedIp   string     `gorm:"column:created_ip;not null;type:varchar(50);comment:'创建地ip'" `
-	CreatedAt   time.Time  `gorm:"column:created_at;default:CURRENT_TIMESTAMP" `
-	UpdatedAt   time.Time  `gorm:"column:updated_at;default:CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP" `
+	CreatedAt   time.Time  `gorm:"column:created_at" `
+	UpdatedAt   time.Time  `gorm:"column:updated_at" `
 	DeletedAt   *time.Time `sql:"index" json:"deleted_at"`
 }
 
-type UserProfile struct {
+func (m *UserInfoModel) CreateUserInfo(user UserInfo, tx ...*gorm.DB) error {
+	db := m.getDB(tx)
+	if err := db.Model(&UserInfo{}).Create(user).Error; err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *UserInfoModel) UpdateUserPassWord(id int64, user UserInfo, tx ...*gorm.DB) error {
+	db := m.getDB(tx)
+	if err := db.Model(&UserInfo{}).Where("id = ?", id).Update("pass_word", user.PassWord).Error; err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *UserInfoModel) GetUserInfo(id int64, tx ...*gorm.DB) (*UserInfo, error) {
+	rst := &UserInfo{}
+	db := m.getDB(tx)
+	if err := db.Model(&UserInfo{}).Where("id = ?", id).First(rst).Error; err != nil {
+		return nil, err
+	}
+	return rst, nil
 }
