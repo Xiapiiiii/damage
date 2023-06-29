@@ -2,6 +2,7 @@ package model
 
 import (
 	"context"
+	"damage/define"
 	"damage/types"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
@@ -63,6 +64,19 @@ func (r *AdventureModel) GetAdventure(ctx context.Context, ID primitive.ObjectID
 	return order, nil
 }
 
+func (r *AdventureModel) GetAdventureByName(ctx context.Context, name string) (*Adventure, error) {
+	rst := r.Mongo.Collection("adventure").FindOne(ctx, bson.M{"name": name})
+	if err := rst.Err(); err != nil {
+		return nil, err
+	}
+	order := new(Adventure)
+	err := rst.Decode(order)
+	if err != nil {
+		return nil, err
+	}
+	return order, nil
+}
+
 func (r *AdventureModel) GetAdventureList(ctx context.Context, cmd *types.GetMobileAdventureListReq) ([]*Adventure, error) {
 	result := make([]*Adventure, 0)
 	coll := r.Mongo.Collection("adventure")
@@ -76,12 +90,12 @@ func (r *AdventureModel) GetAdventureList(ctx context.Context, cmd *types.GetMob
 		filter["name"] = bson.M{"$regex": cmd.Name}
 	}
 
-	if cmd.Quality != 0 {
-		filter["quality"] = cmd.Quality
+	if cmd.Quality != "" {
+		filter["quality"] = define.QualityS[cmd.Quality]
 	}
 
-	if cmd.Location != 0 {
-		filter["location"] = cmd.Location
+	if cmd.Location != "" {
+		filter["location"] = define.LocationS[cmd.Location]
 	}
 
 	_, err := coll.CountDocuments(ctx, filter)

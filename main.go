@@ -1,34 +1,16 @@
 package main
 
 import (
-	"context"
 	"damage/handler"
 	"damage/svc"
 	"github.com/gin-gonic/gin"
-	"go.mongodb.org/mongo-driver/mongo"
-	"go.mongodb.org/mongo-driver/mongo/options"
-	"log"
-	"time"
 )
 
 func main() {
-	client, err := connectToDB()
-	if err != nil {
-		log.Fatal(err)
-	}
 
 	r := gin.Default()
 
-	r.Use(func(c *gin.Context) {
-		c.Set("dbClient", client)
-		c.Next()
-	})
-
-	r.Use(func(c *gin.Context) {
-		ctx := svc.NewServiceContext(c)
-		c.Set("ctx", ctx)
-		c.Next()
-	})
+	r.Use(MyMiddleware())
 
 	//秒伤数据接口
 	r.POST("/form", handler.CalculatedDamage)
@@ -58,10 +40,12 @@ func main() {
 	r.POST("/user/login")
 
 	//批量上传奇遇excel
-	//r.POST("/upload/adventure", handler.UploadAdventureExcel)
+	r.POST("/upload/adventure", handler.UploadAdventureExcel)
 
 	//获取奇遇列表
 	r.POST("/mobile/adventure/list", handler.GetMobileAdventureList)
+	//获取奇遇列表
+	r.POST("api/mobile/adventure/list", handler.GetMobileAdventureList)
 
 	//获取单个奇遇详情
 	r.POST("/mobile/adventure")
@@ -69,15 +53,11 @@ func main() {
 	r.Run(":8080")
 }
 
-func connectToDB() (*mongo.Client, error) {
-	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
-	defer cancel()
-
-	client, err := mongo.Connect(ctx, options.Client().ApplyURI("mongodb://localhost:27017"))
-	log.Println("mongo client success")
-	if err != nil {
-		return nil, err
+func MyMiddleware() gin.HandlerFunc {
+	ctx := svc.NewServiceContext()
+	return func(c *gin.Context) {
+		// 将数据库连接存储在上下文中
+		c.Set("ctx", ctx)
+		c.Next()
 	}
-
-	return client, nil
 }

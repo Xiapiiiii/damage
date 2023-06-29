@@ -65,6 +65,7 @@ func GetVisits(c *gin.Context) {
 
 func GetRankingList(c *gin.Context) {
 	var data types.GetRankingReq
+	//c.Writer.Header().Set("Access-Control-Allow-Origin", "*")
 	if err := c.ShouldBind(&data); err != nil {
 		c.JSON(400, gin.H{"error": errors.New("提交数据错误!请检查")})
 		return

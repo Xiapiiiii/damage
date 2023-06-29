@@ -1,9 +1,11 @@
 package mobile
 
 import (
+	"damage/define"
 	"damage/svc"
 	"damage/types"
 	"github.com/gin-gonic/gin"
+	"strconv"
 )
 
 func GetMobileAdventureList(c *gin.Context, req types.GetMobileAdventureListReq) (adventureList types.GetMobileAdventureListResp, err error) {
@@ -37,12 +39,11 @@ func GetMobileAdventureList(c *gin.Context, req types.GetMobileAdventureListReq)
 		adventureData := types.MobileAdventureListData{
 			ID:               adventure.ID.Hex(),
 			Name:             adventure.Name,
-			CoordX:           adventure.CoordX,
-			CoordY:           adventure.CoordY,
+			Coord:            strconv.FormatInt(adventure.CoordX, 10) + "," + strconv.FormatInt(adventure.CoordY, 10),
 			TriggerCondition: adventure.TriggerCondition,
 			TriggerNpc:       adventure.TriggerNpc,
-			Location:         adventure.Location,
-			Quality:          adventure.Quality,
+			Location:         define.Location[adventure.Location],
+			Quality:          define.Quality[adventure.Quality],
 			Award:            adventure.Award,
 		}
 		data = append(data, adventureData)

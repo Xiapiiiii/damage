@@ -15,7 +15,7 @@ const (
 
 // PVEFixM PVE修正系数
 var PVEFixM = map[int64]float64{
-	ImageOfGod:         1.21,
+	ImageOfGod:         1.25,
 	RiverOfBlood:       1.25,
 	DragonMinding:      1.08,
 	DragonMindingLight: 1.08,
@@ -23,7 +23,7 @@ var PVEFixM = map[int64]float64{
 	NineSpirits:        1.20,
 	TheMystery:         1.27,
 	BrokenDreams:       1.23,
-	HighTone:           1.12,
+	HighTone:           1.15,
 	GarmentOfIron:      1 * 1.15 * 1.05,
 }
 

@@ -6,6 +6,7 @@ import (
 	"damage/types"
 	"fmt"
 	"github.com/gin-gonic/gin"
+	"log"
 	"net/http"
 	"time"
 )
@@ -31,11 +32,11 @@ func CreateUserRegister(c *gin.Context, userRegisterInfo types.UserRegisterInfoR
 		CreatedIp:   userIp,
 		CreatedAt:   time.Now(),
 		UpdatedAt:   time.Now(),
-		DeletedAt:   nil,
 	}
 	fmt.Println(userInfo)
 	err = ctx.UserInfoModel.CreateUserInfo(userInfo)
 	if err != nil {
+		log.Println(err)
 		return types.CommonResp{}, err
 	}
 

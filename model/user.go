@@ -33,6 +33,10 @@ type UserInfo struct {
 	DeletedAt   *time.Time `sql:"index" json:"deleted_at"`
 }
 
+func (UserInfo) TableName() string {
+	return "user_info"
+}
+
 func (m *UserInfoModel) CreateUserInfo(user UserInfo, tx ...*gorm.DB) error {
 	db := m.getDB(tx)
 	if err := db.Model(&UserInfo{}).Create(user).Error; err != nil {
