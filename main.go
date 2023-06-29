@@ -57,6 +57,15 @@ func main() {
 	//登录
 	r.POST("/user/login")
 
+	//批量上传奇遇excel
+	//r.POST("/upload/adventure", handler.UploadAdventureExcel)
+
+	//获取奇遇列表
+	r.POST("/mobile/adventure/list", handler.GetMobileAdventureList)
+
+	//获取单个奇遇详情
+	r.POST("/mobile/adventure")
+
 	r.Run(":8080")
 }
 

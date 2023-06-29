@@ -15,11 +15,11 @@ const (
 
 // PVEFixM PVE修正系数
 var PVEFixM = map[int64]float64{
-	ImageOfGod:         1.18,
+	ImageOfGod:         1.21,
 	RiverOfBlood:       1.25,
 	DragonMinding:      1.08,
 	DragonMindingLight: 1.08,
-	SimpleQuestion:     1.21,
+	SimpleQuestion:     1.25,
 	NineSpirits:        1.20,
 	TheMystery:         1.27,
 	BrokenDreams:       1.23,
@@ -92,8 +92,8 @@ func newImageOfGod() map[string]SkillBaseCoefficient {
 		FactorOfDefeat:      1.0,
 	}
 	imageOfGod["凤凰展翅"] = SkillBaseCoefficient{
-		AttackCoefficient:   1.97 * 1.4,
-		ElementsCoefficient: 1.83 * 1.4,
+		AttackCoefficient:   1.97 * 1.4 * 1.2,
+		ElementsCoefficient: 1.83 * 1.4 * 1.2,
 		ShootRate:           0.185,
 		FactorOfDefeat:      1.0,
 	}
@@ -171,8 +171,8 @@ func newRiverOfBlood() map[string]SkillBaseCoefficient {
 		FactorOfDefeat:      1.0,
 	}
 	riverOfBlood["红莲咆哮戟"] = SkillBaseCoefficient{
-		AttackCoefficient:   1.84 * 1.08,
-		ElementsCoefficient: 0.5,
+		AttackCoefficient:   1.84 * 1.08 * 1.3,
+		ElementsCoefficient: 0.5 * 1.3,
 		ShootRate:           0.32,
 		FactorOfDefeat:      1.0,
 	}
@@ -535,14 +535,14 @@ func newNineSpirits() map[string]SkillBaseCoefficient {
 		FactorOfDefeat:      1.0,
 	}
 	nineSpirits["破梦"] = SkillBaseCoefficient{
-		AttackCoefficient:   2.69,
-		ElementsCoefficient: 2.57,
+		AttackCoefficient:   2.69 * 0.85,
+		ElementsCoefficient: 2.57 * 0.85,
 		ShootRate:           0.26 * 1.25,
 		FactorOfDefeat:      1.0,
 	}
 	nineSpirits["灵犀三现"] = SkillBaseCoefficient{
-		AttackCoefficient:   1.12,
-		ElementsCoefficient: 1.07,
+		AttackCoefficient:   1.12 * 1.2,
+		ElementsCoefficient: 1.07 * 1.2,
 		ShootRate:           0.58 * 1.25,
 		FactorOfDefeat:      1.0,
 	}

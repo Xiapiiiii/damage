@@ -22,6 +22,7 @@ type ServiceContext struct {
 	AccessDayModel *model.AccessDayModel
 	RankingRecord  *model.RankingRecordModel
 	UserInfoModel  *model.UserInfoModel
+	AdventureModel *model.AdventureModel
 }
 
 func NewServiceContext(c *gin.Context) *ServiceContext {
@@ -35,21 +36,22 @@ func NewServiceContext(c *gin.Context) *ServiceContext {
 	mongoDb := client.Database("expert")
 
 	log.Println("mongoDb create success ")
-	var mysqlConf conf.MysqlConfig
-	mysqlConf.Datasource = "root:123456@tcp(localhost:3306)/assistant?charset=utf8mb4&parseTime=True&loc=Local"
-	db := initDB(mysqlConf)
-	err = db.AutoMigrate(
-		&model.UserInfo{})
-	if err != nil {
-		log.Println(err)
-		panic(err)
-	}
+	//var mysqlConf conf.MysqlConfig
+	//mysqlConf.Datasource = "root:123456@tcp(localhost:3306)/assistant?charset=utf8mb4&parseTime=True&loc=Local"
+	//db := initDB(mysqlConf)
+	//err = db.AutoMigrate(
+	//	&model.UserInfo{})
+	//if err != nil {
+	//	log.Println(err)
+	//	panic(err)
+	//}
 	log.Println("mysql create success ")
 	return &ServiceContext{
 		Mongo:          mongoDb,
 		AccessDayModel: model.NewAccessDayModel(mongoDb),
 		RankingRecord:  model.NewRankingRecordModel(mongoDb),
-		UserInfoModel:  model.NewUserInfoModel(db),
+		//UserInfoModel:  model.NewUserInfoModel(db),
+		AdventureModel: model.NewAdventureModel(mongoDb),
 	}
 }
 
