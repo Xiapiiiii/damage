@@ -50,6 +50,13 @@ func main() {
 	//获取单个奇遇详情
 	r.POST("/mobile/adventure")
 
+	//批量上传绝学excel
+	r.POST("/upload/regions-kill", handler.UploadRegionsKillExcel)
+
+	//获取江湖绝学列表
+	r.POST("/mobile/regions-kill/list", handler.GetMobileRegionsKillList)
+	r.POST("api/mobile/regions-kill/list", handler.GetMobileRegionsKillList)
+
 	r.Run(":8080")
 }
 

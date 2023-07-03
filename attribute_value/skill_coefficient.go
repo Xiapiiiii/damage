@@ -353,7 +353,7 @@ func newHighTone() map[string]SkillBaseCoefficient {
 	highTone["醉舞狂歌"] = SkillBaseCoefficient{
 		AttackCoefficient:   0.463 * 1.2,
 		ElementsCoefficient: 0.472,
-		ShootRate:           1.43 * 1.1,
+		ShootRate:           1.43 * 1.1 * 1.2,
 		FactorOfDefeat:      1.0,
 	}
 	//频率需继续测试

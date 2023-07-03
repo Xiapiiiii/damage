@@ -10,6 +10,7 @@ const (
 	QualityBig    = iota + 1 //大吉
 	QualityMedium            //中吉
 	QualitySmall             //小吉
+	QualityFierce            //凶
 )
 
 // 地点
@@ -59,10 +60,12 @@ var Quality = map[int64]string{
 	1: "大吉",
 	2: "中吉",
 	3: "小吉",
+	4: "凶",
 }
 
 var QualityS = map[string]int64{
 	"大吉": 1,
 	"中吉": 2,
 	"小吉": 3,
+	"凶":  4,
 }

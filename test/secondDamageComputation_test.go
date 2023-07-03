@@ -78,7 +78,7 @@ func Test_SecondDamageComputation0(t *testing.T) {
 
 }
 
-// 夏天神相 绝世 3.48
+// 夏天神相 绝世 3.765
 func Test_SecondDamageComputation1(t *testing.T) {
 	skillCoefficients := attribute_value.NewSkillCoefficient(attribute_value.ImageOfGod)
 
@@ -438,7 +438,7 @@ func Test_SecondDamageComputation7(t *testing.T) {
 
 }
 
-// 鸿音 绝世4.05
+// 鸿音 绝世4.16
 func Test_SecondDamageComputation8(t *testing.T) {
 	skillCoefficients := attribute_value.NewSkillCoefficient(attribute_value.HighTone)
 

@@ -18,11 +18,12 @@ const (
 )
 
 type ServiceContext struct {
-	Mongo          *mongo.Database
-	AccessDayModel *model.AccessDayModel
-	RankingRecord  *model.RankingRecordModel
-	UserInfoModel  *model.UserInfoModel
-	AdventureModel *model.AdventureModel
+	Mongo            *mongo.Database
+	AccessDayModel   *model.AccessDayModel
+	RankingRecord    *model.RankingRecordModel
+	UserInfoModel    *model.UserInfoModel
+	AdventureModel   *model.AdventureModel
+	RegionsKillModel *model.RegionsKillModel
 }
 
 func NewServiceContext() *ServiceContext {
@@ -56,7 +57,8 @@ func NewServiceContext() *ServiceContext {
 		AccessDayModel: model.NewAccessDayModel(mongoDb),
 		RankingRecord:  model.NewRankingRecordModel(mongoDb),
 		//UserInfoModel:  model.NewUserInfoModel(db),
-		AdventureModel: model.NewAdventureModel(mongoDb),
+		AdventureModel:   model.NewAdventureModel(mongoDb),
+		RegionsKillModel: model.NewRegionsKillModel(mongoDb),
 	}
 }
 
